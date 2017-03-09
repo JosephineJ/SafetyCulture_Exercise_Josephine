@@ -11,11 +11,11 @@ package TrafficLightSimulator;
 
 public class TrafficLight {
 
-    private TrafficLightPosition position;
+    private Direction position;
 
     private DisplayColour state;
 
-    public TrafficLight(TrafficLightPosition position) {
+    public TrafficLight(Direction position) {
         this.position = position;
     }
 
@@ -33,14 +33,17 @@ public class TrafficLight {
 
     private void updateTrafficLight(DisplayColour colour) {
         this.state = colour;
-        System.out.println(position.toString() + " = " + state.toString());
     }
 
-    public TrafficLightPosition getPosition() {
+    public Direction getPosition() {
         return position;
     }
 
     public DisplayColour getState() {
         return state;
+    }
+
+    public void printTrafficLight() {
+        System.out.println(position.toString() + " = " + state.toString());
     }
 }

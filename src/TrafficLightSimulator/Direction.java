@@ -2,15 +2,15 @@
  *
  * Created by Josephine Suwanto on 9/03/2017.
  *
- * TrafficLightPosition contains of any possible
+ * Direction contains of any possible
  * traffic light's position in an intersection
  *
  */
 
 package TrafficLightSimulator;
 
-public enum TrafficLightPosition {
+public enum Direction {
 
-    N, S, E, W
+    N, E, S, W
 
 }

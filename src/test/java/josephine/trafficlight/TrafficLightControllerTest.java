@@ -23,7 +23,7 @@ public class TrafficLightControllerTest {
     @Test
     public void shouldChangeDisplayColourToGreenOnGo() {
         TrafficLightController trafficLightController = spy(new TrafficLightController());
-        Mockito.doNothing().when(trafficLightController)
+        Mockito.doNothing().when(trafficLightController);
         TrafficLight trafficLight = mock(TrafficLight.class);
         when(trafficLight.getState()).thenReturn(DisplayColour.RED);
 

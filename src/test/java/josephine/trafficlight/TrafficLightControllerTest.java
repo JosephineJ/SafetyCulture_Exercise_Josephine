@@ -1,26 +1,29 @@
 /**
  *
- * Created by Josie on 9/03/2017
+ * Created by Josephine Suwanto on 9/03/2017
  *
  */
 
-package test;
+package josephine.trafficlight;
 
 import josephine.trafficlight.DisplayColour;
 import josephine.trafficlight.TrafficLight;
 import josephine.trafficlight.TrafficLightController;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static java.util.Collections.singletonList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.spy;
 
 public class TrafficLightControllerTest {
 
     @Test
     public void shouldChangeDisplayColourToGreenOnGo() {
-        TrafficLightController trafficLightController = new TrafficLightController();
+        TrafficLightController trafficLightController = spy(new TrafficLightController());
+        Mockito.doNothing().when(trafficLightController)
         TrafficLight trafficLight = mock(TrafficLight.class);
         when(trafficLight.getState()).thenReturn(DisplayColour.RED);
 

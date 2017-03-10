@@ -73,7 +73,7 @@ public class TrafficLightController {
         }
     }
 
-    private void waitForOneSecond() {
+    protected void waitForOneSecond() {
         try {
             Thread.sleep(POLLING_INTERVAL_SEC);
         } catch(InterruptedException e) {

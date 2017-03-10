@@ -8,7 +8,8 @@
  *
  */
 
-package TrafficLightSimulator;
+// do gradle file
+package josephine.trafficlight;
 
 import java.util.List;
 
@@ -43,11 +44,7 @@ public class TrafficLightController {
     public void update(List<TrafficLight> trafficLights) {
         for(int totalCount = 0; totalCount < TOTAL_TIME_SEC; totalCount += DISPLAY_SEC) {
             for(int count = 0; count <= DISPLAY_SEC; count++) {
-                try {
-                    Thread.sleep(POLLING_INTERVAL_SEC);
-                } catch(InterruptedException e) {
-                    e.printStackTrace();
-                }
+                waitForOneSecond();
                 System.out.print("-");
 
                 if(count == DISPLAY_SLOWDOWN_SEC) {
@@ -73,6 +70,14 @@ public class TrafficLightController {
                     }
                 }
             }
+        }
+    }
+
+    private void waitForOneSecond() {
+        try {
+            Thread.sleep(POLLING_INTERVAL_SEC);
+        } catch(InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

@@ -4,7 +4,7 @@
  *
  */
 
-package TrafficLightSimulator;
+package josephine.trafficlight;
 
 import java.util.ArrayList;
 import java.util.List;

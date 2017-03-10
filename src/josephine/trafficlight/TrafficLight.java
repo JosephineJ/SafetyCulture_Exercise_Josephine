@@ -7,7 +7,7 @@
  *
  */
 
-package TrafficLightSimulator;
+package josephine.trafficlight;
 
 public class TrafficLight {
 

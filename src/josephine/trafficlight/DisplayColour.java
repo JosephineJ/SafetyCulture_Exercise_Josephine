@@ -10,7 +10,7 @@
  *
  */
 
-package TrafficLightSimulator;
+package josephine.trafficlight;
 
 public enum DisplayColour {
 

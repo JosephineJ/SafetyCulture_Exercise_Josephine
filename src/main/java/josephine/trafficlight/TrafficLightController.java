@@ -19,23 +19,24 @@ public class TrafficLightController {
     private static final int DISPLAY_SEC = 300; // 5 minutes
     private static final int DISPLAY_SLOWDOWN_SEC = 270;
     private static final int TOTAL_TIME_SEC = 1800; // 30 minutes
-    private static final int POLLING_INTERVAL_SEC = 100;
-
-    // JK: these numbers would be good if they were inputs to the trafficlightcontroller
-    // future design thinking?
+    private static final int POLLING_INTERVAL_MILLIS = 1000;
 
     public TrafficLightController() {
+
     }
 
     // arbitrary assigning North and South as go, and East and West as stop.
     public void initialise(List<TrafficLight> trafficLights) {
         trafficLights.forEach(trafficLight -> {
-            if(trafficLight.getPosition().equals(Direction.N) ||
-                    trafficLight.getPosition().equals(Direction.S)) {
-                trafficLight.go();
-            } else if(trafficLight.getPosition().equals(Direction.E) ||
-                    trafficLight.getPosition().equals(Direction.W)) {
-                trafficLight.stop();
+            switch(trafficLight.getPosition()) {
+                case N:
+                case S:
+                    trafficLight.go();
+                    break;
+                case E:
+                case W:
+                    trafficLight.stop();
+                    break;
             }
             trafficLight.printTrafficLight();
         });
@@ -48,15 +49,17 @@ public class TrafficLightController {
                 System.out.print("-");
 
                 if(count == DISPLAY_SLOWDOWN_SEC) {
-                    printTime(totalCount);
+                    printTime(totalCount + count);
                     for(TrafficLight trafficLight : trafficLights) {
-                        if(trafficLight.getState() == DisplayColour.GREEN) {
-                            trafficLight.slowdown();
+                        switch(trafficLight.getState()) {
+                            case GREEN:
+                                trafficLight.slowdown();
+                                break;
                         }
                         trafficLight.printTrafficLight();
                     }
                 } else if(count == DISPLAY_SEC) {
-                    printTime(totalCount);
+                    printTime(totalCount + count);
                     for(TrafficLight trafficLight : trafficLights) {
                         switch(trafficLight.getState()) {
                             case RED:
@@ -75,7 +78,7 @@ public class TrafficLightController {
 
     protected void waitForOneSecond() {
         try {
-            Thread.sleep(POLLING_INTERVAL_SEC);
+            Thread.sleep(POLLING_INTERVAL_MILLIS);
         } catch(InterruptedException e) {
             e.printStackTrace();
         }
